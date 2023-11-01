@@ -13,7 +13,7 @@ class Logs extends Model
     protected $primaryKey = 'id_logs';
     protected $integer ='tanggal';
     protected $string = 'aktor';
-    protected $string = 'aksi';
+    protected $string = 'aksa';
 
 
     public $timestamps = false;
