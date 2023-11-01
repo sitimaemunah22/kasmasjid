@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->id();
+            $table->id();
             $table->unsignedBigInteger('kode_pengeluaran')->nullable(false);
             $table->unsignedBigInteger('id_pengeluaran')->nullable(false);
             $table->integer('jumlah_pemsukan')->nullable(false);
