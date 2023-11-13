@@ -1,5 +1,5 @@
 .bg-c-blue {
-    background: linear-gradient(45deg,gray,pink);
+    background: linear-gradient(45deg, green,pink);
 }
 
 .bg-c-green {
@@ -7,7 +7,7 @@
 }
 
 .bg-c-yellow {
-    background: linear-gradient(45deg,gray,pink);
+    background: linear-gradient(45deg,green,pink);
 }
 
 .bg-c-pink {
@@ -16,16 +16,20 @@
 
 .card {
     border-radius: 5px;
-    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(143, 224, 235);
-    box-shadow: 0 1px 2.94px 0.06px rgba(6, 113, 128);
+    -webkit-box-shadow: 0 1px 2.94px 0.06px green;
+    box-shadow: 0 1px 2.94px 0.06px green;
     border: none;
     margin-bottom: 30px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
+.bg-main {
+    background-color :rgb(31,140,12);
+}
+
 .navbar{
-    background-color: pink ;
+    background-color: green ;
 }
 
 .chart-background {
@@ -57,16 +61,16 @@
 }
 
 .btn-hapus{
-    background-color: pink;
+    background-color: green;
 }
 
 
 /* Mengatur efek gradient pada teks */
-.text-gradient {
-    background-image: linear-gradient(to right, pink,white); /* Ganti kode warna sesuai dengan gradient yang kamu inginkan */
+.text {
+    background-image: black; /* Ganti kode warna sesuai dengan gradient yang kamu inginkan */
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent; /* Membuat teks asli menjadi transparan */
+    
 }
 
 

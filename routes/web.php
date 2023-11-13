@@ -28,6 +28,7 @@ Route::get('', function() {
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register',[AuthController::class, 'buatAkun'])->name('register');
 
 Route::prefix('/dashboard')->middleware('auth')->group(function () {
     /* Dashboard */

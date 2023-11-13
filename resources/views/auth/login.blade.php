@@ -1,11 +1,18 @@
-@extends('layouts.app')
-@section('title', 'Login')
-@section('content')
-    <section class="vh-80">
-        <div class="container-fluid py-5 h-100">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
+<section class="bg-main vh-80">
+        <div class="bg-main container-fluid py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100 pt-5">
                 <div class="col-md-8 col-lg-6 col-xl-4 pt-5 mt-5">
-                    <div class="card bg-secondary shadow-lg">
+                    <div class="card bg-main shadow-lg">
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <h2 class="text-gradient">Selamat Datang Di Masjid AL-AMIN</h2>
@@ -37,7 +44,8 @@
 
                                 <!-- Submit button -->
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-gradient btn-lg btn-block">Login</button> <br> belum memiliki akun?</br> <a href="register.blade.php">Register</a> 
+                                    <button type="submit" class="btn btn-gradient btn-lg btn-block">Login</button>
+                                    <br> belum memiliki akun?</br> <a href="{{url('/register')}}">Register</a> 
                                 </div>
                                 
                             </form>
@@ -47,8 +55,7 @@
             </div>
         </div>
     </section>
-@endsection
-@section('footer')
+
     <script type="module">
         $('form').submit(async function (e) {
             e.preventDefault();
@@ -82,4 +89,5 @@
 
         })
     </script>
-@endsection
+</body>
+</html>

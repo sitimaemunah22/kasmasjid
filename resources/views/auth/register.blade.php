@@ -1,87 +1,91 @@
-@extends('layouts.app')
-
+<!--@extends('layouts.app') -->
+@section('title', 'Register')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text"
-                                           class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
+    <section class="vh-80">
+        <div class="container-fluid py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100 pt-5">
+                <div class="col-md-8 col-lg-6 col-xl-4 pt-5 mt-5">
+                    <div class="card bg-white shadow-lg">
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <h2 class="text-gradient">Selamat Datang Di Masjid AL-AMIN</h2>
+                                <p class="text-gradient">Silakan masuk ke akun Anda</p>
                             </div>
-
-                            <div class="row mb-3">
-                                <label for="email"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            <form action="">
+                                <!-- Username input -->
+                                <div class="mb-3">
+                                    <label for="username" class="form-label text-gradient">NIK</label>
+                                    <input type="nik" id="nik" class="form-control" name="nik"
+                                           required/>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required autocomplete="new-password">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                <!-- Password input -->
+                                <div class="mb-3">
+                                    <label for="username" class="form-label text-gradient">Username</label>
+                                    <input type="userame" id="username" class="form-control" name="username"
+                                           required/>
                                 </div>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="password-confirm"
-                                       class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                           name="password_confirmation" required autocomplete="new-password">
+                                <div class="mb-3">
+                                    <label for="password" class="form-label text-gradient">Password</label>
+                                    <input type="password" id="password" class="form-control" name="password"
+                                           required/>
                                 </div>
-                            </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
+
+
+                                <div class="text-danger errors">
+                                    <p class="err-message"></p>
                                 </div>
-                            </div>
-                        </form>
+                                @csrf 
+
+                                <!-- Submit button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-gradient btn-lg btn-block">Register</button> 
+                                    <br> Sudah memiliki akun?</br> <a href="{{ route('login') }}">Login</a>
+                                </div>
+                                
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+@endsection
+@section('footer')
+    <script type="module">
+        $('form').submit(async function (e) {
+            e.preventDefault();
+            let username = $('#username').val();
+            let password = $('#password').val();
+            var _tok     = "{{csrf_token()}}"
+
+            await axios({
+                method: 'post',
+                url: "{{url('/login')}}",
+                data: {
+                    username : username,
+                    password : password,
+                    _token   : _tok
+                }
+            }).then(async () => {
+                await swal.fire({
+                    title: 'Login berhasil!',
+                    text: 'Redirecting to dashboard...',
+                    icon: 'success',
+                    timer: 1000,
+                    showConfirmButton: false
+                })
+                window.location = '/dashboard'
+                console.log('success')
+            }).catch(({response}) => {
+                if (!$('.err-message').text()) {
+                    $('.err-message').append(document.createTextNode(response.data.errors.message))
+                }
+            })
+
+        })
+    </script>
 @endsection
