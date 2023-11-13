@@ -2,64 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auth;
+use App\Http\Requests\UserLoginRequest;
+use App\Models\User;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware('guest')->only('index');
+    }
+
     public function index()
     {
-        //
+        if (!Auth::user()) {
+            return view('auth.login');
+        }
+
+        return redirect()->to('/dashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login(UserLoginRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if (Auth::attempt($data)) {
+            $request->session()->regenerate();
+            return Auth::user();
+        }
+
+        return response()->json([
+            'errors' => [
+                'message' => 'Username or password wrong !'
+            ]
+        ], 401);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Auth $auth)
-    {
-        //
+        Auth::logout();
+        return redirect('/login');
     }
 }

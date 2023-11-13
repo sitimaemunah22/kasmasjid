@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('donaturs', function (Blueprint $table) {
-            $table->id()->nullable(false);
+        Schema::create('donatur', function (Blueprint $table) {
+            $table->id();
             $table->string('nama', 255)->nullable(false);
             $table->string('alamat', 255)->nullable(false);
-            $table->integer('no_telephone', 12)->nullable(false);
+            $table->integer('no_telephone')->nullable(false);
             $table->text('upload')->nullable(true);
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('donaturs');
+        Schema::dropIfExists('donatur');
     }
 };

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('auths', function (Blueprint $table) {
-            $table->intrgr('nik', 16)->nullable(false)->primary();
-            $table->integer('password');
-            $table->string('username');
+        Schema::create('auth', function (Blueprint $table) {
+            $table->integer('nik')->nullable(false)->primary();
+            $table->integer('password')->nullable(false);
+            $table->string('username')->nullable(false);
             $table->enum('role',['admin','operator']);
         });
     }
@@ -24,6 +24,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('auth');
+
     }
 };

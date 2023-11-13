@@ -2,64 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jenis_pengeluaran;
+use App\Models\JenisPengeluaran;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class JenisPengeluaranController extends Controller
+class JenisSuratController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $data = [
+            'jenis_pemasukan' => JenisPengeluaran::all()
+        ];
+
+        return view('dashboard.jenis-pengeluaran.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'jenis_pengeluaran' => ['required', 'max:40']
+        ]);
+
+        if ($data) {
+            if ($request->input('id') !== null) {
+                // TODO: Update Jenis Surat
+                $jenis_pengeluaran = JenisPengeluaran::query()->find($request->input('id'));
+                $jenis_pengeluaran->fill($data);
+                $jenis_pengeluaran->save();
+
+                return response()->json([
+                    'message' => 'Jenis pengeluaran berhasil diupdate!'
+                ], 200);
+            }
+
+            $dataInsert = JenisPengeluaran::create($data);
+            if ($dataInsert) {
+                return redirect()->to('/dashboard/pengeluaran/jenis')->with('success', 'Jenis pengeluaran berhasil ditambah');
+            }
+        }
+
+        return redirect()->to('/dashboard/pengeluaran/jenis')->with('error', 'Gagal tambah data');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(jenis_pengeluaran $jenis_pengeluaran)
+    public function delete(int $id): JsonResponse
     {
-        //
-    }
+        $jenis_pengeluaran = JenisPengeluaran::query()->find($id)->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(jenis_pengeluaran $jenis_pengeluaran)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, jenis_pengeluaran $jenis_pengeluaran)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(jenis_pengeluaran $jenis_pengeluaran)
-    {
-        //
+        if ($jenis_pengeluaran):
+            //Pesan Berhasil
+            $pesan = [
+                'success' => true,
+                'pesan' => 'Data user berhasil dihapus'
+            ];
+        else:
+            //Pesan Gagal
+            $pesan = [
+                'success' => false,
+                'pesan' => 'Data gagal dihapus'
+            ];
+        endif;
+        return response()->json($pesan);
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kode_pengeluaran')->nullable(false);
             $table->unsignedBigInteger('id_pengeluaran')->nullable(false);
+            $table->unsignedBigInteger('id_donatur')->nullable(false);
             $table->integer('jumlah_pemsukan')->nullable(false);
             $table->dateTime('tanggal_pemasukan')->default('2023-01-01 00:00:00')->nullable(false);
             $table->text('upload')->nullable(true);

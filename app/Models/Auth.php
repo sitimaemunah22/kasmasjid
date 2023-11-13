@@ -10,7 +10,7 @@ use laravel\Sanctum\HasApiTokens;
 class Auth extends Model
 {
     use HasFactory, HasApiTokens, Notifiable;
-    protected $table = 'maecantik';
+    protected $table = 'kode';
     protected $primaryKey = 'nik';
     public $timestamps = false;
     protected $fillable = [

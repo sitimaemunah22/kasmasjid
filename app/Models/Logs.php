@@ -11,10 +11,8 @@ class Logs extends Model
 
     protected $table = 'logs';
     protected $primaryKey = 'id_logs';
-    protected $integer ='tanggal';
-    protected $string = 'aktor';
-    protected $string = 'aksa';
-
+    protected $fillable = ['id_logs','table','actor','tanggal','jam','record','aksi'];
 
     public $timestamps = false;
 }
+
