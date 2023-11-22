@@ -7,7 +7,12 @@ import 'bootstrap';
  */
 
 import axios from 'axios';
+import Jquery from 'jquery';
+import Swal from 'sweetalert2';
+
+window.swal = Swal
 window.axios = axios;
+window.$ = window.Jquery = Jquery
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

@@ -7,7 +7,7 @@
 }
 
 .bg-c-yellow {
-    background: linear-gradient(45deg,green,pink);
+    background: linear-gradient(45deg,green,green);
 }
 
 .bg-c-pink {
@@ -58,6 +58,10 @@
     border: none; /* Menghapus garis tepi jika ada */
     /* padding: 10px 20px;  */
  
+}
+
+.bg.main {
+    background-color : rgb(156, 30, 78);
 }
 
 .btn-hapus{

@@ -14,7 +14,7 @@ class JenisSuratController extends Controller
             'jenis_pemasukan' => JenisPemasukan::all()
         ];
 
-        return view('dashboard.jenis-pemasukan.index', $data);
+        return view('jenis_pemasukan.index', $data);
     }
 
     public function store(Request $request)

@@ -27,21 +27,23 @@ class AuthController extends Controller
         return redirect()->to('/dashboard');
     }
 
-
-    public function buatAkun()
+    
+    public function buatakun()
     {
-        // if (!Auth::user()) {
+    
             return view('auth.register');
-        // }
+    
         // return redirect()->to('/login');
     }
 
     
 
-    public function login(UserLoginRequest $request)
+    public function login(Request $request)
     {
-        $data = $request->validated();
-
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
             return Auth::user();

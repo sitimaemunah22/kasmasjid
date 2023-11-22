@@ -20,7 +20,7 @@ class PemasukanController extends Controller
             'jenis_pemasukan' => JenisPemasukan::all()
         ];
 
-        return view('dashboard.pemasukan.index', $data);
+        return view('pemasukan.index', $data);
     }
 
     public function store(PemasukanCreateRequest $request)

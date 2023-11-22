@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Total : 1.000.000') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,6 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <h1>HALO</h1>
+
+                    <img src="logomasjid.png" width="100" height="50">
                 </div>
             </div>
         </div>

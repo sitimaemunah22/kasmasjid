@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('auth', function (Blueprint $table) {
-            $table->integer('nik')->nullable(false)->primary();
-            $table->integer('password')->nullable(false);
-            $table->string('username')->nullable(false);
-            $table->enum('role',['admin','operator']);
+            $table->integer('nik');
+            $table->string('username', 255)->nullable(false);
+            $table->string('password', 255)->nullable(false);
+            $table->enum('role',['bendahara','ketua','masyarakat']);
         });
     }
 

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\JenisPengeluaran;
+use App\Models\jenis_pengeluaran;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class JenisSuratController extends Controller
+class JenisPengeluaranController extends Controller
 {
     public function index()
     {
         $data = [
-            'jenis_pemasukan' => JenisPengeluaran::all()
+            'jenis_pengeluaran' => jenis_pengeluaran::all()
         ];
 
         return view('dashboard.jenis-pengeluaran.index', $data);
@@ -26,7 +26,7 @@ class JenisSuratController extends Controller
         if ($data) {
             if ($request->input('id') !== null) {
                 // TODO: Update Jenis Surat
-                $jenis_pengeluaran = JenisPengeluaran::query()->find($request->input('id'));
+                $jenis_pengeluaran = jenis_pengeluaran::query()->find($request->input('id'));
                 $jenis_pengeluaran->fill($data);
                 $jenis_pengeluaran->save();
 
@@ -35,7 +35,7 @@ class JenisSuratController extends Controller
                 ], 200);
             }
 
-            $dataInsert = JenisPengeluaran::create($data);
+            $dataInsert = jenis_pengeluaran::create($data);
             if ($dataInsert) {
                 return redirect()->to('/dashboard/pengeluaran/jenis')->with('success', 'Jenis pengeluaran berhasil ditambah');
             }
@@ -46,7 +46,7 @@ class JenisSuratController extends Controller
 
     public function delete(int $id): JsonResponse
     {
-        $jenis_pengeluaran = JenisPengeluaran::query()->find($id)->delete();
+        $jenis_pengeluaran = jenis_pengeluaran::query()->find($id)->delete();
 
         if ($jenis_pengeluaran):
             //Pesan Berhasil
