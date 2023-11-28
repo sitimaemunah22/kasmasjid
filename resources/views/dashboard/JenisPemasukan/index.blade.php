@@ -1,8 +1,6 @@
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head>
-     <script src="../assets/js/color-modes.js"></script>
+  <head><script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -60,7 +58,6 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
-      
 
       .btn-bd-primary {
         --bd-violet-bg: rgba(83, 163, 93, 0.8);
@@ -71,12 +68,12 @@
         --bs-btn-bg: var(--bd-violet-bg);
         --bs-btn-border-color: var(--bd-violet-bg);
         --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
+        --bs-btn-hover-bg: #dee2e6;
+        --bs-btn-hover-border-color: #dee2e6;
+        --bs-btn-focus-shadow-rgb: #dee2e6;
+        --bs-btn-active-color: #dee2e6;
+        --bs-btn-active-bg: #dee2e6;
+        --bs-btn-active-border-color: #dee2e6;
       }
 
       .bd-mode-toggle {
@@ -135,15 +132,7 @@ aside {
   overflow-y: auto;
 }
 
-.nav-link a {
-        text-decoration: none;
-        color: white;       
-    }
 
-    .nav-link a:hover {
-        color: your_desired_hover_color; 
-        text-decoration: underline;   
-    }
     </style>
 
   </head>
@@ -189,47 +178,46 @@ aside {
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-    <a href="{{url('/dashboard')}}">Home</a>
-</span>
-      </li>
-      <li>
-      <span class="nav-link text-white" aria-current="page">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/pemasukan')}}">Pemasukan</a>
-</span>
-      </li>
-      <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/pengeluaran')}}">Pengeluaran</a>
-</span>
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          Home
         </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/jenispemasukan')}}">Jenis Pemasukan</a>
-</span>
+        <a href="pemasukan" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Pemasukan
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/jenispengeluaran')}}">Jenis Pengeluaran</a>
-</span>
+        <a href="pengeluaran" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Pengeluaran
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/donatur')}}">Donatur</a>
-</span>
+        <a href="JenisPemasukan" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Jenis Pemasukan
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/user')}}">User</a>
-</span>
+        <a href="jenis_pengeluaran" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Jenis Pengeluaran
+        </a>
+      </li>
+      <li>
+        <a href="donatur" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Donatur
+        </a>
+      </li>
+      <li>
+        <a href="user" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          User
+        </a>
       </li>
     </ul>
     <hr>
@@ -243,7 +231,38 @@ aside {
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="sidebars.js"></script>
+    <script src="sidebars.js"></script>
   
   </body>
 </html>
+
+
+<div class="content">
+    <div class="card card-info card-outline">
+        <div class="card-header">
+            <div class="card-tools">
+                <a href="/dashboard/pemasukan/tambah" class="btn btn-success">Tambah Data <i class="fas fa-plus-square"></i></a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Isi tabel disini -->
+                        <tr>
+                            <td></td>
+                            <!-- ... -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

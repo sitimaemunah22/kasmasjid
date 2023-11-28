@@ -2,20 +2,20 @@
 @section('title', 'Manajemen Jenis Pengeluaran')
 @section('content')
     <div class="row">
-        <div class="col d-flex justify-content-between mb-2">
+        <div class="col d-flex justify-end-between mb-2">
             <a class="btn btn-gradient" href="{{url('/dashboard')}}">
                 Kembali</a>
             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                     data-bs-target="#tambah-jenis-pengeluaran-modal"> Tambah
             </button>
-            <!-- Tambah Jenis Surat Modal -->
+            <!-- Tambah Jenis Pengeluaran Modal -->
             <div class="modal fade" id="tambah-jenis-pengeluaran-modal" tabindex="-1"
                  aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jaenis Pengeluaran</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Jenis Pengeluaran</h1>
                         </div>
                         <div class="modal-body">
                             <form id="tambah-jenis-pengeluaran-form">
@@ -51,7 +51,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($jenis_pengeluaran as $js)
+                        @foreach($data as $js)
                             <tr idJS="{{$js->id}}">
                                 <td class="col-1">{{$js->kode jenis pengeluaran}}</td>
                                 <td>{{$js->nama jenis pengeluaran}}</td>

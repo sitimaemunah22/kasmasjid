@@ -39,8 +39,8 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center ">
-        <div class="col-md">
+    <div class="row justify-content-end">
+        <div class="col-10">
             <div class="card">
                 <div class="card-body">
                     <table class="table table-bordered table-hovered DataTable">
@@ -51,10 +51,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($pengeluaran as $js)
+                        @foreach($data as $js)
                             <tr idJS="{{$js->id}}">
-                                <td class="col-1">{{$js->kode pengeluaran}}</td>
-                                <td>{{$js->nama pengeluaran}}</td>
+                                <td class="col-1">{{$js->kodepengeluaran}}</td>
+                                <td>{{$js->namapengeluaran}}</td>
                                 <td class="col-2">
                                     <!-- Button  edit modal -->
                                     <button type="button" class="editBtn btn btn-gradient" data-bs-toggle="modal"

@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('pemasukan', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('kode_pemasukan')->nullable(false);
-                $table->unsignedBigInteger('id_pemasukan')->nullable(false);
+                $table->unsignedBigInteger('id_jenis_pemasukan')->nullable(false);
                 $table->unsignedBigInteger('id_donatur')->nullable(false);
                 $table->integer('jumlah_pemsukan')->nullable(false);
                 $table->dateTime('tanggal_pemasukan')->default('2023-01-01 00:00:00')->nullable(false);
                 $table->text('upload')->nullable(true);
     
-                $table->foreign('id_pemasukan')->on('jenis_pemasukan')->references('id');
+                $table->foreign('id_jenis_pemasukan')->on('jenis_pemasukan')->references('id');
                 $table->foreign('id_donatur')->on('donatur')->references('id');
             });
     }

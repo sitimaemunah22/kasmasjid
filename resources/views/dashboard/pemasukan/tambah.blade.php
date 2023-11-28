@@ -1,8 +1,10 @@
+{{-- @extends('layouts.app')
+@section('title', 'Pemasukan')
+@section('content') --}}
 
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head>
-     <script src="../assets/js/color-modes.js"></script>
+  <head><script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -60,7 +62,6 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
-      
 
       .btn-bd-primary {
         --bd-violet-bg: rgba(83, 163, 93, 0.8);
@@ -71,12 +72,12 @@
         --bs-btn-bg: var(--bd-violet-bg);
         --bs-btn-border-color: var(--bd-violet-bg);
         --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
+        --bs-btn-hover-bg: #dee2e6;
+        --bs-btn-hover-border-color: #dee2e6;
+        --bs-btn-focus-shadow-rgb: #dee2e6;
+        --bs-btn-active-color: #dee2e6;
+        --bs-btn-active-bg: #dee2e6;
+        --bs-btn-active-border-color: #dee2e6;
       }
 
       .bd-mode-toggle {
@@ -135,15 +136,7 @@ aside {
   overflow-y: auto;
 }
 
-.nav-link a {
-        text-decoration: none;
-        color: white;       
-    }
 
-    .nav-link a:hover {
-        color: your_desired_hover_color; 
-        text-decoration: underline;   
-    }
     </style>
 
   </head>
@@ -189,47 +182,46 @@ aside {
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-    <a href="{{url('/dashboard')}}">Home</a>
-</span>
-      </li>
-      <li>
-      <span class="nav-link text-white" aria-current="page">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/pemasukan')}}">Pemasukan</a>
-</span>
-      </li>
-      <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/pengeluaran')}}">Pengeluaran</a>
-</span>
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          Home
         </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/jenispemasukan')}}">Jenis Pemasukan</a>
-</span>
+        <a href="pemasukan" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Pemasukan
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/jenispengeluaran')}}">Jenis Pengeluaran</a>
-</span>
+        <a href="pengeluaran" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+          Pengeluaran
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/donatur')}}">Donatur</a>
-</span>
+        <a href="JenisPemasukan" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Jenis Pemasukan
+        </a>
       </li>
       <li>
-      <span class="nav-link text-white">
-    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-    <a href="{{url('/dashboard/user')}}">User</a>
-</span>
+        <a href="jenis_pengeluaran" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+          Jenis Pengeluaran
+        </a>
+      </li>
+      <li>
+        <a href="donatur" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          Donatur
+        </a>
+      </li>
+      <li>
+        <a href="user" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+          User
+        </a>
       </li>
     </ul>
     <hr>
@@ -243,7 +235,48 @@ aside {
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="sidebars.js"></script>
+    <script src="sidebars.js"></script>
   
   </body>
 </html>
+
+
+
+<div class="container">
+    <div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk memusatkan div -->
+        <div class="col-10">
+          <div class="card">
+                <div class="card-body">
+                
+                        <div class="mb-3">
+                            <div class="form-group">
+                              <h3 class="text-center mb-4">Tambah Data</h3>
+                                <!-- <input type="text" id="id" name="id" class="form-control" placeholder="id"> -->
+                            </div>
+
+                            <div class="form-group">
+                            <form action="{{ route('simpan.pemasukan') }}" method="post">
+                                {{ csrf_field() }}
+                                <input type="number" id="kode" name="kode_pemasukan" class="form-control" placeholder="kode_pemasukan">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="id" name="id_jenis_pemasukan" class="form-control" placeholder="id_jenis_pemasukan">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="id" name="id_donatur" class="form-control" placeholder="id_donatur">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="jumlah" name="jumlah_pemsukan" class="form-control" placeholder="jumlah_pemsukan">
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="tanggal" name="tanggal_pemasukan" class="form-control" placeholder="tanggal_pemasukan">
+                            </div>
+                            <div class="form-group text-left"><br></br> <!-- Menggunakan text-center untuk memusatkan tombol -->
+                                <button type="submit" class="btn btn-success">Simpan Data</button>
+                            </div>
+                            </from>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

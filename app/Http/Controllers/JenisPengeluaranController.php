@@ -25,7 +25,7 @@ class JenisPengeluaranController extends Controller
 
         if ($data) {
             if ($request->input('id') !== null) {
-                // TODO: Update Jenis Surat
+                // TODO: Update Jenis Pengeluaran
                 $jenis_pengeluaran = jenis_pengeluaran::query()->find($request->input('id'));
                 $jenis_pengeluaran->fill($data);
                 $jenis_pengeluaran->save();

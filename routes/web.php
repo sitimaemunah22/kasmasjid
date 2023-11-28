@@ -43,34 +43,25 @@ Route::prefix('/dashboard')->group(function () {
             Route::delete('/user/{id}/delete', 'delete')->where('id', '[0-9]+');
         });
 
-        /* Jenis Surat */
-        Route::controller(JenisPemasukanController::class)->group(function () {
-            Route::get('/pemasukan/jenis', 'index');
-            Route::post('/pemasukan/jenis/tambah', 'store');
-            Route::post('/pemasukan/jenis/{id}/edit', 'store');
-            Route::delete('/pemasukan/jenis/{id}/delete', 'delete');
-        });
+      
 
-        Route::controller(JenisPengeluaranController::class)->group(function () {
-            Route::get('/pengeluaran/jenis', 'index');
-            Route::post('/pengeluaran/jenis/tambah', 'store');
-            Route::post('/pengeluaran/jenis/{id}/edit', 'store');
-            Route::delete('/pengeluaran/jenis/{id}/delete', 'delete');
-        });
 
     });
 
     /* Surat */
-    Route::controller(PemasukanController::class)->group(function () {
-        Route::get('/pemasukan', 'index');
-        Route::post('/pemasukan', 'store');
-        Route::get('/pemasukan/download', 'download');
-        Route::post('/pemasukan/{id}', 'update');
-        Route::delete('/pemasukan/{id}', 'delete');
-    });
+    
 
+    Route::get('/pemasukan', [PemasukanController::class, 'index'])->name('pemasukan.index');
+    Route::get('/pemasukan/tambah', [PemasukanController::class, 'tambah'])->name('pemasukan.tambah');
+    Route::post('/pemasukan/simpan', [PemasukanController::class, 'simpan'])->name('simpan.pemasukan');
+
+   
+
+    Route::get('/jenispemasukan/tambah', [PemasukanController::class, 'tambah'])->name('jenispemasukan.tambah');
+    Route::post('/jenispemasukan/simpan', [PemasukanController::class, 'simpan'])->name('simpan.pemasukan');
 
     Route::controller(PengeluaranController::class)->group(function () {
+
         Route::get('/pengeluaran', 'index');
         Route::post('/pengeluaran', 'store');
         Route::get('/pengeluaran/download', 'download');
@@ -78,13 +69,24 @@ Route::prefix('/dashboard')->group(function () {
         Route::delete('/pengeluaran/{id}', 'delete');
     });
 
-    Route::controller(JenisPemasukanController::class)->group(function () {
-        Route::get('/jenis_pemasukan', 'index');
-        Route::post('/jenis_pemasukan', 'store');
-        Route::get('/jenis_pemasukan/download', 'download');
-        Route::post('/jenis_pemasukan/{id}', 'update');
-        Route::delete('/jenis_pemasukan/{id}', 'delete');
+    
+    Route::controller(PemasukanController::class)->group(function () {
+
+        Route::get('/pemasukan', 'index');
+        Route::post('/pemasukan', 'store');
+        Route::get('/pemasukan/download', 'download');
+        Route::post('/pemasukan/{id}', 'update');
+        Route::delete('/pemasukan /{id}', 'delete');
     });
+
+    Route::controller(JenisPemasukanController::class)->group(function () {
+        Route::get('/dashboard/jenis', [JenisPemasukanController::class, 'index']);
+        Route::post('/dashboard/jenis_pemasukan', 'store');
+        Route::get('/dashboard/jenis_pemasukan/download', 'download');
+        Route::post('/dashboard/jenis_pemasukan/{id}', 'update');
+        Route::delete('/dashboard/jenis_pemasukan/{id}', 'delete');
+    });
+
 
     Route::controller(JenisPengeluaranController::class)->group(function () {
         Route::get('/jenis_pengeluaran', 'index');

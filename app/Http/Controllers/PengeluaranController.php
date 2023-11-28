@@ -13,15 +13,20 @@ use Illuminate\View\View;
 
 class PengeluaranController extends Controller
 {
-    public function index(): View
-    {
-        $data = [
-            'pengeluaran' => Pengeluaran::with('jenis', 'user')->orderByDesc('tanggal_pengeluaran')->get(),
-            'jenis_pemasukan' => JenisPemasukan::all()
-        ];
+    // public function index(): View
+    // {
+    //     $data = [
+    //         'pengeluaran' => Pengeluaran::with('jenis', 'user')->orderByDesc('tanggal_pengeluaran')->get(),
+    //         'jenis_pemasukan' => JenisPemasukan::all()
+    //     ];
 
-        return view('dashboard.pengeluaran.index', $data);
-    }
+    //     return view('dashboard.pengeluaran.index', $data);
+    // }
+    public function index()
+{
+    $data = pengeluaran::all();
+    return view('dashboard.pengeluaran.index', compact('data'));
+}
 
     public function store(PengeluaranCreateRequest $request)
     {
@@ -36,7 +41,7 @@ class PengeluaranController extends Controller
 
         if (!$pengeluaran) {
             return response()->json([
-                'message' => 'Failed create surat'
+                'message' => 'Failed create pengeluaran'
             ], 403);
         }
 

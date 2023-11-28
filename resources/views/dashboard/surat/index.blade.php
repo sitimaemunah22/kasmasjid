@@ -7,7 +7,7 @@
             <a class="btn btn-gradient" href="{{url('/dashboard')}}">
                 Kembali</a>
             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#tambah-surat-modal"> Tambah
+                    data-bs-target="#tambah-pe-modal"> Tambah
             </button>
             <!-- Tambah Surat Modal -->
             <div class="modal fade" id="tambah-surat-modal" tabindex="-1"

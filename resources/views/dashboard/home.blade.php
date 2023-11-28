@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-end">
+        <div class="col-10">
             <div class="card">
                 <div class="card-header">{{ __('Total : 1.000.000') }}</div>
 
